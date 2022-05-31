@@ -1,0 +1,32 @@
+SYSTEM = "host"
+ISTART = 1
+ICHARG = 1
+              ISYM = 2
+             EDIFF = 0.00001
+            ISMEAR = 0
+               NSW = 0
+            LORBIT = 10
+       
+            IBRION = -1
+             ISPIN = 1
+          
+              ISIF = 2
+           LMAXMIX = 4
+            LPLANE = .TRUE.
+             SIGMA = 0.05
+PREC = accurate
+ENCUT = 400.000000
+LOPTICS = .FALSE.
+LRPA = .FALSE.
+EDIFFG = -0.001
+LWAVE = F
+LCHARG = F
+LPEAD = .FALSE.
+###for hse
+LHFCALC = .TRUE.
+ALGO = Damped
+HFSCREEN = 0.2
+AEXX = 0.25
+TIME = 0.4
+PRECFOCK = Fast
+NBANDS = 336

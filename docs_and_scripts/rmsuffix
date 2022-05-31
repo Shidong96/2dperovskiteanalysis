@@ -1,0 +1,2 @@
+for file in $(ls *); do f=${file%.*}; cp $file ../$f; done
+

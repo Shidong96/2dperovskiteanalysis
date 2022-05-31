@@ -1,0 +1,18 @@
+#!/bin/bash
+#PBS -N vasp
+#PBS -l nodes=1:ppn=20
+#PBS -j n
+#PBS -q host2
+#PBS -e ${PBS_JOBNAME}.err
+#PBS -o ${PBS_JOBNAME}.out
+
+export OMP_NUM_THREADS=1
+export LD_LIBRARY_PATH=/opt/intel/openmpi-1.8.4/lib:$LD_LIBRARY_PATH
+export PATH=/opt/intel/openmpi-1.8.4/bin:$PATH
+export LD_LIBRARY_PATH=/opt/intel/composer_xe_2015.0.090/compiler/lib/intel64:$LD_LIBRARY_PATH
+
+cd $PBS_O_WORKDIR
+NP=`cat $PBS_NODEFILE|wc -l`
+/opt/intel/openmpi-1.8.4/bin/mpirun -np 20 /home/xgzhao/apps/bin/vasp.5.3.5_scf > run.log 2 >& 1
+
+

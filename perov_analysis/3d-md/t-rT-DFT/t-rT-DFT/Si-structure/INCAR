@@ -1,0 +1,54 @@
+SYSTEM=Si
+ISTART=0     # 0-new job
+ICHARG=2     # 2-Take superposition of atomic charge densities
+
+PREC=Normal # normal accuracy
+
+GGA=PE # PBE XC
+IVDW=11 #zero damping DFT-D3 method of Grimme
+LASPH = .TRUE.
+
+IBRION=2 # ion relax.
+ISIF=3      # relax cell 
+NSW=999       # number of force optim. iterations
+EDIFF=1.0E-07
+EDIFFG=-0.02
+
+ALGO=Normal
+
+LREAL = Auto
+
+#AMIN=0.01  # reduce mixing for improved convergence
+
+LCHARG=.FALSE.   # do NO store charge density
+LWAVE=.FALSE.     # store FWs
+LVTOT=.FALSE.     # write LOCPOT file contains the total local potential (in eV)
+
+ISPIN=1          # 1 non spin polarized calculations are performed
+
+ISMEAR=0; SIGMA=0.01          # smearing for metals
+
+#NCORE=8          # number of cores in parallel calc.
+KPAR=4          # number of cores per k-point
+
+
+# SOC
+#LNONCOLLINEAR = .TRUE.
+#MAGMOM = 480*0
+#LSORBIT = .TRUE.
+#SAXIS =   0 0 1 # (quantisation axis for spin)
+#GGA_COMPAT = .FALSE.
+
+
+#LDAU = .TRUE.          # Enable DFT + U
+#LDAUTYPE = 2           # LSDA+U Dudaev et al.
+#LDAUL = -1 -1 -1       # O   Bi   La (-1 no onsite +U)
+#LDAUU = 0  0.0  0      # U-value (eV) [Wang et al., PRB 73, 195107 (2006)]
+#LDAUJ = 3*0            # J-value (eV)
+#LDAUPRINT = 0          # do NOT Write occupancy matrix to OUTCAR file
+
+
+# DOS PLOT
+#EMIN = -10
+#EMAX = 12
+#NEDOS = 800

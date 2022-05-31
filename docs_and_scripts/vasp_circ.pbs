@@ -1,0 +1,46 @@
+#! /bin/bash 
+#PBS -N vasp
+#PBS -l nodes=1:ppn=36
+#PBS -j n
+#PBS -q host3
+#PBS -e ${PBS_JOBNAME.err}
+#PBS -e ${PBS_JOBNAME.out}
+
+export OMP_NUM_THREADS=1
+EXEC=/home/yusd/yusd1615/opt_vdw/vasp-optcell
+export LD_LIBRARY_PATH=/opt/intel/openmpi-1.8.4/lib:$LD_LIBRARY_PATH
+export PATH=/opt/intel/openmpi-1.8.4/bin:$PATH
+export LD_LIBRARY_PATH=/opt/intel/composer_xe_2015.0.090/compiler/lib/intel64:$LD_LIBRARY_PATH
+
+cd $PBS_O_WORKDIR
+NP=`cat $PBS_NODEFILE|wc -l`
+
+cp INCAR_1 INCAR
+/opt/intel/openmpi-1.8.4/bin/mpirun -np $NP  $EXEC > run1.log
+cp CONTCAR CONTCAR_1
+
+cp CONTCAR POSCAR
+cp INCAR_2 INCAR
+/opt/intel/openmpi-1.8.4/bin/mpirun -np $NP  $EXEC > run2.log
+cp CONTCAR CONTCAR_2
+
+cp CONTCAR POSCAR
+cp INCAR_3 INCAR
+/opt/intel/openmpi-1.8.4/bin/mpirun -np $NP  $EXEC > run3.log
+
+cd ../scf
+cp ../opt/CONTCAR ./POSCAR
+/opt/intel/openmpi-1.8.4/bin/mpirun -np $NP /home/xgzhao/apps/bin/vasp.5.3.5_scf > run.log 2 >& 1
+cp CHG* ../band
+cd ../band
+cp ../opt/CONTCAR ./POSCAR
+/opt/intel/openmpi-1.8.4/bin/mpirun -np $NP /home/xgzhao/apps/bin/vasp.5.3.5_scf > run.log 2 >& 1
+
+#cp CONTCAR ../scf/POSCAR
+#cp POTCAR ../scf/POTCAR
+#cp KPOINTS ../scf/KPOINTS
+#cd ../scf
+#cp INCAR_SCF INCAR
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS}  $EXEC > run3.log
+
+

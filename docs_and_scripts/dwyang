@@ -1,0 +1,18 @@
+#!/bin/bash
+
+cp INCAR_1 INCAR
+#/opt/intel/impi/4.1.0.024/bin64/mpiexec.hydra -n 16 /home/dwyang/opt/opt_vasp/vasp_c/vasp.5.2/vasp_boltz
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp.5.3-neb/vasp
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp_c/vasp.5.2/vasp_boltz
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp.5.3-neb/vasp
+/opt/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/workplace_2017/vasp_std
+cp INCAR_2 INCAR
+cp CONTCAR POSCAR
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp_c/vasp.5.2/vasp_boltz
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp.5.3-neb/vasp
+/opt/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/workplace_2017/vasp_std
+cp INCAR_3 INCAR
+cp CONTCAR POSCAR
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp_c/vasp.5.2/vasp_boltz
+#/opt/intel/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/opt/vasp.5.3-neb/vasp
+/opt/openmpi-1.8.4/bin/mpirun -np ${NSLOTS} /home/dwyang/workplace_2017/vasp_std
